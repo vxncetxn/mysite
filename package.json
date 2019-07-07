@@ -1,0 +1,34 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "description": "portfolio",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.0.21",
+    "@mdx-js/react": "^1.0.21",
+    "babel-plugin-prismjs": "^1.0.2",
+    "babel-plugin-styled-components": "^1.10.4",
+    "gatsby": "^2.3.16",
+    "gatsby-image": "^2.2.4",
+    "gatsby-mdx": "^0.6.3",
+    "gatsby-plugin-styled-components": "^3.1.0",
+    "gatsby-source-filesystem": "^2.1.2",
+    "prismjs": "^1.16.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "prettier": "^1.17.0"
+  }
+}

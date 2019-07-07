@@ -1,0 +1,52 @@
+---
+title: Accessible Icon Buttons
+slug: writing/accessible-icon-buttons
+tags: javascript markup
+published: 5 July 2019
+---
+
+# IntroPara
+
+An icon button is an icon that triggers some sort of action on the page. More accurately, technically speaking, an icon button is a button that contains an icon and no (visible) accompanying text. These buttons can be found in the majority of app and user interfaces today. The infamous hamburger menu button is a great example of such buttons when not visually labelled “Menu”.
+
+Emphasis Para
+
+# Rest of Paras
+
+## Why Accessibility For Buttons?
+
+Putting aside the UX side of the coin and whether or not an icon alone is enough to convey meaning and functionality to users, many implementations of these buttons today lack the proper accessibility that makes them meaningful to users of assistive technologies.
+
+While the seemingly popular aria-label is a perfectly valid way to add an accessible name to a button (and/or other components), it is certainly not the only way, let alone the best. You could always just put text in it, for example. But what if the designer or the UI enforces the absence of visual text next to an icon?
+
+There is a handful of ways that an icon button can be implemented accessibly. This article is an overview of them all.
+
+## Accessible Button Names
+
+A button is announced to screen readers as a button when the proper element — the almighty button is used, or when an element has a role = "button" on it. Either way, when a button is announced as one, users expect to be able to interact with it in a certain way, which includes being able to activate the button using either the ENTER or SPACE keys.
+
+This means that if you choose not to use the native button element, you’ll need to reimplement that native behavior and functionality yourself using JavaScript. But who would want to create a brittle implementation of features that are provided to them by default by the browser when they can save both time and effort using a simple button, right? ;)
+
+## Inspecting the Button Name in Chrome Devtools
+
+To inspect what the accessible name of a button is and, therefore, how it will be announced by a screen reader, you can use the Chrome devtools. Next to the Style tab, you’ll find an “Accessibility“ tab, inside which you will find something that looks like this:
+
+The accessible name for the button can be defined in several ways, as you can see in the image above. When you put plain text inside the button, that text content can then be used as a name for the button, which is then announced: "Send Message, Button" by VoiceOver.
+
+You can inspect the button below yourself and check the accessible name in the devtools, and fire up your screen reader of choice to see how it is announced.
+
+Now, what happens when we have an icon inside the button?
+
+## Icon Sitting Next to Text
+
+This post is about icon-only buttons. But it’s worth starting with buttons that contain an icon sitting next to some text.
+
+When a button contains text, that text is going to be used to create an accessible name for the button. That text should usually be enough to convey what the button does to screen readers.
+
+As such, the icon itself (an svg image) could become irrelevant to screen reader users, as it does not clarify or add to the accessible name of the button. As such, the common practice is to hide it from screen readers using aria-hidden:
+
+Code Block
+
+The aria-hidden attribute is used to indicate whether an element is exposed to screen readers or not. When set to “true”, the element and its contents are hidden from the accessibility API, regardless of whether or not it is visually displayed.
+
+The svg also has a focusable attribute set to false which prevents the icon itself from receiving focus in IE, because otherwise the button will have two Tab stops, which is not the expected or desired behavior.
