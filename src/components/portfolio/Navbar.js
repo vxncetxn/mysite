@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// import { Link } from "gatsby";
 
 import DelayedLink from "../primitives/DelayedLink";
 
@@ -82,7 +81,7 @@ const NavbarComp = ({ setTransitionDownActivated }) => {
         <li>
           <DelayedLink
             className="hvr-sweep-to-right"
-            to="/writing"
+            to="/writing/main"
             delay={1200}
             uniqueID="portfolio-nav-delayed-link"
             clickEffect={pageTransitionDown}

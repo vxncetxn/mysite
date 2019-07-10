@@ -76,8 +76,14 @@ export function randomizeElements() {
   );
   root.style.setProperty(
     "--color-tertiary",
-    `hsl(${(
+    `hsla(${(
       mainHue - 180
-    ).toString()}, ${mainSaturation.toString()}%, ${mainLightness.toString()}%)`
+    ).toString()}, ${mainSaturation.toString()}%, ${mainLightness.toString()}%, 1)`
+  );
+  root.style.setProperty(
+    "--color-tertiary-light",
+    `hsla(${(
+      mainHue - 180
+    ).toString()}, ${mainSaturation.toString()}%, ${mainLightness.toString()}%, 0.1)`
   );
 }

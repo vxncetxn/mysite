@@ -51,6 +51,7 @@ export default ({ data: { mdx: post } }) => {
     <Layout className="writing-layout-body">
       {transitionUpActivated ? <Portfolio decorative={"fromWriting"} /> : null}
       <WritingMain
+        post={post}
         decorative={false}
         setTransitionUpActivated={setTransitionUpActivated}
       />

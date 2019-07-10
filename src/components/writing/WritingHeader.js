@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 
 import DelayedLink from "../primitives/DelayedLink";
 
@@ -61,7 +61,10 @@ const StyledLink = styled(Link)`
   cursor: pointer;
 `;
 
-const WritingHeaderComp = ({ setTransitionUpActivated }) => {
+const WritingHeaderComp = ({
+  frontmatter = false,
+  setTransitionUpActivated
+}) => {
   function pageTransitionUp(setTransitionUpActivated) {
     setTransitionUpActivated(true);
     if (document.documentElement.scrollTop) {
@@ -73,6 +76,23 @@ const WritingHeaderComp = ({ setTransitionUpActivated }) => {
     document
       .querySelector(".writing-layout-body")
       .classList.add("page-transition-to-up");
+  }
+
+  let front;
+  if (!frontmatter) {
+    front = useStaticQuery(graphql`
+      query {
+        mdx(frontmatter: { slug: { eq: "writing/main" } }) {
+          frontmatter {
+            title
+            tags
+            published
+          }
+        }
+      }
+    `).mdx.frontmatter;
+  } else {
+    front = frontmatter;
   }
 
   return (
@@ -111,13 +131,17 @@ const WritingHeaderComp = ({ setTransitionUpActivated }) => {
           </li>
         </ul>
       </WritingNav>
-      <WritingTitle>Writing and Articles</WritingTitle>
+      <WritingTitle>{front.title}</WritingTitle>
       <WritingBadges>
-        {/* <WritingBadge>26 articles in total</WritingBadge> */}
-        <WritingBadge>Published 5 May 2019</WritingBadge>
-        <WritingBadge>Javascript</WritingBadge>
-        <WritingBadge>Golang</WritingBadge>
-        <WritingBadge>CSS</WritingBadge>
+        <WritingBadge>26 articles in total</WritingBadge>
+        {front.published === "none" ? null : (
+          <WritingBadge>{`Published ${front.published}`}</WritingBadge>
+        )}
+        {front.tags === "none"
+          ? null
+          : front.tags.split(" ").map(tag => {
+              return <WritingBadge>{tag}</WritingBadge>;
+            })}
       </WritingBadges>
     </WritingHeader>
   );

@@ -13,7 +13,8 @@ const Defaults = createGlobalStyle`
       --color-primary-darker: hsl(212, 37%, 10%);
       --color-primary-filter: hsla(205, 74%, 65%, 0.5);
       --color-secondary: hsl(360, 71%, 66%);
-      --color-tertiary: hsl(42, 87%, 55%);
+      --color-tertiary: hsla(42, 87%, 55%, 1);
+      --color-tertiary-light: hsla(42, 87%, 55%, 0.1);
       --color-white: #fcfcfc;
       --color-gray: hsl(0, 0%, 96%);
 
@@ -52,6 +53,17 @@ const Defaults = createGlobalStyle`
       line-height: 0.6;
       border-bottom: 8px solid var(--color-tertiary);
     }
+
+    // .trial {
+    //   border-radius: 5px;
+    //   padding-left: 3px;
+    //   background-image: 
+    //     linear-gradient(-100deg, 
+    //       var(--color-tertiary-light),
+    //       var(--color-tertiary) 100%, 
+    //       var(--color-tertiary-light)
+    //     );
+    // }
 
     // Animations
     .hvr-sweep-to-left:before {

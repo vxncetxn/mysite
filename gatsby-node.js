@@ -19,7 +19,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   writingPosts.forEach(post => {
     actions.createPage({
       path: post.frontmatter.slug,
-      component: require.resolve("./src/pages/writing.js"),
+      component: require.resolve("./src/templates/writing.js"),
       context: {
         slug: post.frontmatter.slug
       }

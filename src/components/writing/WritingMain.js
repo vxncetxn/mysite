@@ -29,7 +29,11 @@ const TopShape = styled.div`
 
 // const BottomShape = styled.div``;
 
-const WritingMainComp = ({ decorative, setTransitionUpActivated }) => {
+const WritingMainComp = ({
+  post = {},
+  decorative,
+  setTransitionUpActivated
+}) => {
   return (
     <WritingMain
       decorative={decorative}
@@ -40,8 +44,11 @@ const WritingMainComp = ({ decorative, setTransitionUpActivated }) => {
       }
     >
       <TopShape />
-      <WritingHeader setTransitionUpActivated={setTransitionUpActivated} />
-      <WritingBody />
+      <WritingHeader
+        frontmatter={post.frontmatter}
+        setTransitionUpActivated={setTransitionUpActivated}
+      />
+      <WritingBody code={post.code} />
       <WritingTags />
       <WritingFooter />
     </WritingMain>
