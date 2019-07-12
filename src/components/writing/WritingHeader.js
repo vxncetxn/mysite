@@ -5,6 +5,7 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 import DelayedLink from "../primitives/DelayedLink";
 
 const WritingHeader = styled.header`
+  position: relative;
   height: 380px;
   padding: 40px 140px;
   padding-bottom: 10px;
@@ -24,15 +25,20 @@ const WritingNav = styled.nav`
 `;
 
 const WritingTitle = styled.h1`
+  position: absolute;
   font-size: 5.2rem;
   font-family: var(--font-primary), sans-serif;
   font-weight: 900;
-  margin-top: 85px;
+  // margin-top: 85px;
+  bottom: 140px;
   color: var(--color-white);
-  //   border: 2px solid green;
+  // border: 2px solid green;
+  margin-right: 140px;
 `;
 
 const WritingBadges = styled.ul`
+  position: absolute;
+  bottom: 70px;
   display: flex;
   margin-top: 30px;
 `;

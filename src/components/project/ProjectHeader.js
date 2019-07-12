@@ -17,7 +17,7 @@ const ProjectHeader = styled.div`
   flex: 0 0 auto;
   clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
   padding: 40px 130px 40px 50px;
-  }
+  // border: 2px solid red;
 `;
 
 const ColorFilter = styled.div`
@@ -51,19 +51,21 @@ const StyledLink = styled(Link)`
 `;
 
 const ProjectTitle = styled.h1`
-  position: relative;
+  position: absolute;
   font-size: 5.2rem;
   font-family: var(--font-primary), sans-serif;
   font-weight: 900;
-  margin-top: 300px;
+  // margin-top: 300px;
+  bottom: 118px;
   color: var(--color-white);
   //   border: 2px solid green;
 `;
 
 const ProjectBadges = styled.ul`
-  position: relative;
+  position: absolute;
+  bottom: 45px;
   display: flex;
-  margin-top: 30px;
+  // margin-top: 30px;
 `;
 
 const ProjectBadge = styled.span`
