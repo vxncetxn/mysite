@@ -78,9 +78,9 @@ const WritingHeaderComp = ({
       .classList.add("page-transition-to-up");
   }
 
-  let front;
+  let relevant;
   if (!frontmatter) {
-    front = useStaticQuery(graphql`
+    relevant = useStaticQuery(graphql`
       query {
         mdx(frontmatter: { slug: { eq: "writing/main" } }) {
           frontmatter {
@@ -92,7 +92,7 @@ const WritingHeaderComp = ({
       }
     `).mdx.frontmatter;
   } else {
-    front = frontmatter;
+    relevant = frontmatter;
   }
 
   return (
@@ -131,15 +131,15 @@ const WritingHeaderComp = ({
           </li>
         </ul>
       </WritingNav>
-      <WritingTitle>{front.title}</WritingTitle>
+      <WritingTitle>{relevant.title}</WritingTitle>
       <WritingBadges>
         <WritingBadge>26 articles in total</WritingBadge>
-        {front.published === "none" ? null : (
-          <WritingBadge>{`Published ${front.published}`}</WritingBadge>
+        {relevant.published === "none" ? null : (
+          <WritingBadge>{`Published ${relevant.published}`}</WritingBadge>
         )}
-        {front.tags === "none"
+        {relevant.tags === "none"
           ? null
-          : front.tags.split(" ").map(tag => {
+          : relevant.tags.split(" ").map(tag => {
               return <WritingBadge>{tag}</WritingBadge>;
             })}
       </WritingBadges>

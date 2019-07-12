@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { useStaticQuery, graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-mdx";
 
-import NumberedParaHead from "../primitives/NumberedParaHead";
-import DefaultPara from "../primitives/DefaultPara";
+// import ParaHead from "../primitives/ParaHead";
+// import DefaultPara from "../primitives/DefaultPara";
 
 const ProjectBody = styled.div`
   height: 100%;
@@ -21,39 +23,60 @@ const ProjectBody = styled.div`
     // border: 1px solid green;
   }
 
-  & img {
-    height: 100%;
-    // border: 1px solid red;
-    border: 10px solid var(--color-primary);
+  & > .defaultpara-projects {
+    width: 600px;
   }
 
-  & > div {
-    // border: 1px solid green;
+  & > p {
+    background-color: var(--color-primary);
+
+    & > span {
+      & > span {
+        display: none !important;
+      }
+
+      & img {
+        border: 10px solid var(--color-primary);
+        height: 100%;
+      }
+    }
   }
 `;
 
-const ProjectDefaultPara = styled(DefaultPara)`
-  width: 600px;
-`;
+// const ProjectDefaultPara = styled(DefaultPara)`
+//   width: 600px;
+// `;
 
-const ProjectBodyComp = () => {
+const ProjectBodyComp = ({ code = false }) => {
+  let relevant;
+  if (!code) {
+    relevant = useStaticQuery(graphql`
+      query {
+        mdx(frontmatter: { slug: { eq: "projects/shakespeare" } }) {
+          code {
+            body
+          }
+        }
+      }
+    `).mdx.code.body;
+  } else {
+    relevant = code.body;
+  }
   return (
     <ProjectBody>
-      <div>
-        <NumberedParaHead>
-          Responsive and modern ticketing system
-        </NumberedParaHead>
-        <ProjectDefaultPara>
+      <MDXRenderer>{relevant}</MDXRenderer>
+      {/* <div className="defaultpara-projects">
+        <ParaHead number="01">Responsive and modern ticketing system</ParaHead>
+        <DefaultPara>
           Recently, I found Steve on Twitter and saw how he was sharing design
           tips targeted at developers with no design background, I followed him
           in the blink of an eye. I'm not exaggerating when I say that he was
           one of my best follows in 2018. This is really incredible and thus I
-          would like to share it with all of you. trust me when I say that this
-          will change the world.
-        </ProjectDefaultPara>
+          would like to share it with all of you.
+        </DefaultPara>
       </div>
       <img src={require("../../assets/trial1.png")} alt="picz" />
-      <img src={require("../../assets/archiviz6.png")} alt="picz2" />
+      <img src={require("../../assets/archiviz6.png")} alt="picz2" /> */}
       {/* <div>
         <DefaultPara>
           I remember the day I asked him to make a book out of all the tips he’d

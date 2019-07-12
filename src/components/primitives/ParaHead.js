@@ -7,12 +7,27 @@ const ParaHead = styled.h2`
   color: var(--color-primary-dark);
   font-weight: 900;
   margin-bottom: 2rem;
-  // border: 1px solid red;
+  // border: 1px solid green;
   width: 600px;
+
+  ${props =>
+    props.number
+      ? `
+    ::before {
+      content: "${props.number}";
+      display: inline-block;
+      border-bottom: 5px solid var(--color-primary-dark);
+      font-size: 2.4rem;
+      margin-right: 4rem;
+      transform: translateY(-11px);
+      text-indent: 12px;
+    }
+  `
+      : null}
 `;
 
-const ParaHeadComp = ({ children }) => {
-  return <ParaHead>{children}</ParaHead>;
+const ParaHeadComp = ({ children, number }) => {
+  return <ParaHead number={number}>{children}</ParaHead>;
 };
 
 export default ParaHeadComp;

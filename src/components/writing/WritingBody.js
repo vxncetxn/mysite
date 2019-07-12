@@ -8,19 +8,16 @@ const WritingBody = styled.main`
   margin: 60px 0;
   padding: 0 140px;
 
-  & > p > br + a {
+  & p > br + a,
+  & h2 + p {
     margin-top: 40px;
   }
 
-  & > h2 + p {
-    margin-top: 40px;
-  }
-
-  & > p + h2 {
-    margin-top: 60px;
-  }
-
-  & > p + p {
+  & p + h2,
+  & p + p,
+  & p + div,
+  & pre + p,
+  & p + pre {
     margin-top: 60px;
   }
 
@@ -35,9 +32,9 @@ const WritingBody = styled.main`
 `;
 
 const WritingBodyComp = ({ code = false }) => {
-  let data;
+  let relevant;
   if (!code) {
-    data = useStaticQuery(graphql`
+    relevant = useStaticQuery(graphql`
       query {
         mdx(frontmatter: { slug: { eq: "writing/main" } }) {
           code {
@@ -45,11 +42,13 @@ const WritingBodyComp = ({ code = false }) => {
           }
         }
       }
-    `);
+    `).mdx.code.body;
+  } else {
+    relevant = code.body;
   }
   return (
     <WritingBody>
-      <MDXRenderer>{code.body || data.mdx.code.body}</MDXRenderer>
+      <MDXRenderer>{relevant}</MDXRenderer>
     </WritingBody>
   );
 };

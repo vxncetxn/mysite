@@ -7,7 +7,7 @@ const Pre = styled.pre`
   margin: 0 100px;
   background-color: var(--color-primary-darker);
   border-radius: 10px;
-  padding: 30px 50px;
+  padding: 30px 40px;
   overflow-x: scroll;
 `;
 

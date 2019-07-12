@@ -112,7 +112,7 @@ const MainComp = ({ setTransitionRightActivated }) => {
           <ul>
             <li>
               <DelayedLink
-                to="/project"
+                to="/projects/shakespeare"
                 delay={1200}
                 uniqueID="portfolio-main-genart-delayed-link"
                 clickEffect={pageTransitionRight}
@@ -132,7 +132,7 @@ const MainComp = ({ setTransitionRightActivated }) => {
             </li>
             <li>
               <DelayedLink
-                to="/project"
+                to="/projects/shakespeare"
                 delay={1200}
                 uniqueID="portfolio-main-toolsio-delayed-link"
                 clickEffect={pageTransitionRight}
@@ -152,7 +152,7 @@ const MainComp = ({ setTransitionRightActivated }) => {
             </li>
             <li>
               <DelayedLink
-                to="/project"
+                to="/projects/shakespeare"
                 delay={1200}
                 uniqueID="portfolio-main-exampledev-delayed-link"
                 clickEffect={pageTransitionRight}
@@ -172,7 +172,7 @@ const MainComp = ({ setTransitionRightActivated }) => {
             </li>
             <li>
               <DelayedLink
-                to="/project"
+                to="/projects/shakespeare"
                 delay={1200}
                 uniqueID="portfolio-main-completeprojects-delayed-link"
                 clickEffect={pageTransitionRight}

@@ -1,7 +1,7 @@
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const results = await graphql(`
+  const writingResults = await graphql(`
     query {
-      allMdx {
+      allMdx(filter: { frontmatter: { type: { eq: "writing" } } }) {
         nodes {
           frontmatter {
             slug
@@ -10,16 +10,41 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       }
     }
   `);
-
-  if (results.errors) {
-    reporter.panic("failed to create posts", results.errors);
+  if (writingResults.errors) {
+    reporter.panic("failed to create posts", writingResults.errors);
   }
 
-  const writingPosts = results.data.allMdx.nodes;
+  const projectsResults = await graphql(`
+    query {
+      allMdx(filter: { frontmatter: { type: { eq: "projects" } } }) {
+        nodes {
+          frontmatter {
+            slug
+          }
+        }
+      }
+    }
+  `);
+  if (projectsResults.errors) {
+    reporter.panic("failed to create posts", projectsResults.errors);
+  }
+
+  const writingPosts = writingResults.data.allMdx.nodes;
+  const projectsPosts = projectsResults.data.allMdx.nodes;
+
   writingPosts.forEach(post => {
     actions.createPage({
       path: post.frontmatter.slug,
       component: require.resolve("./src/templates/writing.js"),
+      context: {
+        slug: post.frontmatter.slug
+      }
+    });
+  });
+  projectsPosts.forEach(post => {
+    actions.createPage({
+      path: post.frontmatter.slug,
+      component: require.resolve("./src/templates/projects.js"),
       context: {
         slug: post.frontmatter.slug
       }

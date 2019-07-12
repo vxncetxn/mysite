@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 
 import DelayedLink from "../primitives/DelayedLink";
 import image from "../../assets/sitedemo1-optim.png";
@@ -60,13 +60,13 @@ const ProjectTitle = styled.h1`
   //   border: 2px solid green;
 `;
 
-const WritingBadges = styled.ul`
+const ProjectBadges = styled.ul`
   position: relative;
   display: flex;
   margin-top: 30px;
 `;
 
-const WritingBadge = styled.span`
+const ProjectBadge = styled.span`
   display: inline-block;
   font-size: 2rem;
   font-family: var(--font-secondary), sans-serif;
@@ -79,7 +79,10 @@ const WritingBadge = styled.span`
   text-align: center;
 `;
 
-const ProjectHeaderComp = ({ setTransitionLeftActivated }) => {
+const ProjectHeaderComp = ({
+  frontmatter = false,
+  setTransitionLeftActivated
+}) => {
   function pageTransitionLeft(setTransitionLeftActivated) {
     setTransitionLeftActivated(true);
     if (document.documentElement.scrollLeft) {
@@ -91,6 +94,22 @@ const ProjectHeaderComp = ({ setTransitionLeftActivated }) => {
     document
       .querySelector(".project-layout-body")
       .classList.add("page-transition-to-left");
+  }
+
+  let relevant;
+  if (!frontmatter) {
+    relevant = useStaticQuery(graphql`
+      query {
+        mdx(frontmatter: { slug: { eq: "projects/shakespeare" } }) {
+          frontmatter {
+            title
+            tags
+          }
+        }
+      }
+    `).mdx.frontmatter;
+  } else {
+    relevant = frontmatter;
   }
 
   return (
@@ -129,12 +148,14 @@ const ProjectHeaderComp = ({ setTransitionLeftActivated }) => {
           </li>
         </ul>
       </ProjectNav>
-      <ProjectTitle>Projects and Work</ProjectTitle>
-      <WritingBadges>
-        <WritingBadge>Javascript</WritingBadge>
-        <WritingBadge>Golang</WritingBadge>
-        <WritingBadge>CSS</WritingBadge>
-      </WritingBadges>
+      <ProjectTitle>{relevant.title}</ProjectTitle>
+      <ProjectBadges>
+        {relevant.tags === "none"
+          ? null
+          : relevant.tags.split(" ").map(tag => {
+              return <ProjectBadge>{tag}</ProjectBadge>;
+            })}
+      </ProjectBadges>
     </ProjectHeader>
   );
 };

@@ -4,12 +4,13 @@ import styled from "styled-components";
 const Highlighted = styled.span`
   border-radius: 5px;
   padding-left: 3px;
-  background-image: linear-gradient(
-    -100deg,
-    var(--color-tertiary-light),
-    var(--color-tertiary) 100%,
-    var(--color-tertiary-light)
-  );
+  background-color: var(--color-tertiary);
+  // background-image: linear-gradient(
+  //   -100deg,
+  //   var(--color-tertiary-light),
+  //   var(--color-tertiary) 100%,
+  //   var(--color-tertiary-light)
+  // );
 `;
 
 const HighlightedComp = ({ children }) => {

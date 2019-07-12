@@ -1,15 +1,16 @@
 ---
+type: writing
 title: Accessible Icon Buttons
 slug: writing/accessible-icon-buttons
 tags: Javascript Markup
 published: 5 July 2019
 ---
 
-import DefaultPara from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src/components/primitives/DefaultPara.js";
-import QuotePara from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src/components/primitives/QuotePara.js";
-import CodePara from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src/components/primitives/CodePara.js";
-import Anchor from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src/components/primitives/Anchor.js";
-import Highlighted from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src/components/primitives/Highlighted.js";
+import DefaultPara from "../../../components/primitives/Anchor.js";
+import QuotePara from "../../../components/primitives/QuotePara.js";
+import CodePara from "../../../components/primitives/CodePara.js";
+import Anchor from "../../../components/primitives/Anchor.js";
+import Highlighted from "../../../components/primitives/Highlighted.js";
 
 <DefaultPara className="intropara-writing" extend={{ fontSize: "3rem" }}>
   <span className="initial-letter">R</span>ecently, I found{" "}
@@ -22,24 +23,26 @@ import Highlighted from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src
   </Anchor>{" "}
   and saw how he was sharing design tips targeted at developers with no design
   background, I followed him in the blink of an eye. I'm not{" "}
-  <Highlighted>exaggerating</Highlighted> when I say that he was one of my best
-  follows in 2018. A book that contained all the useful tips he was sharing, the
-  way he was sharing them, would have been a box full of gems.
+  <Highlighted>exaggerating (trust and believe me!)</Highlighted> when I say
+  that he was one of my best follows in 2018. A book that contained all the
+  useful tips he was sharing, the way he was sharing them, would have been a box
+  full of gems.
 </DefaultPara>
 
-<QuotePara>
-  A button is announced to screen readers as a button when the proper element —
-  the almighty button is used
-</QuotePara>
+<div className="defaultpara-writing">
+  <QuotePara>
+    A button is announced to screen readers as a button when the proper element —
+    the almighty button is used
+  </QuotePara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   Putting aside the UX side of the coin and whether or not an icon alone is
   enough to convey meaning and functionality to users, many implementations of
   these buttons today lack the proper accessibility that makes them meaningful
   to users of assistive technologies.
 </DefaultPara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   While the seemingly popular aria-label is a perfectly valid way to add an
   accessible name to a button (and/or other components), it is certainly not the
   only way, let alone the best. You could always just put text in it, for
@@ -47,12 +50,12 @@ import Highlighted from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src
   text next to an icon?
 </DefaultPara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   There is a handful of ways that an icon button can be implemented accessibly.
   This article is an overview of them all.
 </DefaultPara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   A button is announced to screen readers as a button when the proper element —
   the almighty button is used, or when an element has a role = "button" on it.
   Either way, when a button is announced as one, users expect to be able to
@@ -60,7 +63,7 @@ import Highlighted from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src
   button using either the ENTER or SPACE keys.
 </DefaultPara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   This means that if you choose not to use the native button element, you’ll
   need to reimplement that native behavior and functionality yourself using
   JavaScript. But who would want to create a brittle implementation of features
@@ -68,37 +71,37 @@ import Highlighted from "/Users/vancetan/Documents/Experiments/Portfolio-Two/src
   time and effort using a simple button, right? ;)
 </DefaultPara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   To inspect what the accessible name of a button is and, therefore, how it will
   be announced by a screen reader, you can use the Chrome devtools. Next to the
   Style tab, you’ll find an “Accessibility“ tab, inside which you will find
   something that looks like this:
 </DefaultPara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   The accessible name for the button can be defined in several ways, as you can
   see in the image above. When you put plain text inside the button, that text
   content can then be used as a name for the button, which is then announced:
   "Send Message, Button" by VoiceOver.
 </DefaultPara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   You can inspect the button below yourself and check the accessible name in the
   devtools, and fire up your screen reader of choice to see how it is announced.
 </DefaultPara>
 
-<DefaultPara className="defaultpara-writing">
+<DefaultPara>
   Now, what happens when we have an icon inside the button?
 </DefaultPara>
 
-<CodePara>
-{`onSubmit(e) {
-    e.preventDefault();
-    const job = {
-        title: 'Developer',
-        company: 'Facebook' 
-    };
-}
-`}
+  <CodePara>
+  {`onSubmit(e) {
+      e.preventDefault();
+      const job = {
+          title: 'Developer',
+          company: 'Facebook' 
+      };
+  }`}
 
-</CodePara>
+  </CodePara>
+</div>

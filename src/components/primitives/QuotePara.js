@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const QuotePara = styled.p`
-  margin: 0 100px;
+  // margin: 0 100px;
   padding: 5px 20px;
   font-size: 3rem;
   font-family: var(--font-secondary), sans-serif;

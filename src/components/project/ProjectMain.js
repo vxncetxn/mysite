@@ -14,15 +14,22 @@ const ProjectMain = styled.div`
   display: inline-flex;
 `;
 
-const ProjectMainComp = ({ decorative, setTransitionLeftActivated }) => {
+const ProjectMainComp = ({
+  post = {},
+  decorative,
+  setTransitionLeftActivated
+}) => {
   return (
     <ProjectMain
       style={
         decorative ? { transform: `translateX(${window.innerWidth}px)` } : null
       }
     >
-      <ProjectHeader setTransitionLeftActivated={setTransitionLeftActivated} />
-      <ProjectBody />
+      <ProjectHeader
+        frontmatter={post.frontmatter}
+        setTransitionLeftActivated={setTransitionLeftActivated}
+      />
+      <ProjectBody code={post.code} />
     </ProjectMain>
   );
 };
