@@ -12,7 +12,8 @@ module.exports = {
               maxWidth: 1200,
               linkImagesToOriginal: false,
               withWebp: true,
-              wrapperStyle: "height: 470px;"
+              wrapperStyle:
+                "height: 470px; background-color: var(--color-primary);"
             }
           }
         ]

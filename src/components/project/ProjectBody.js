@@ -15,7 +15,7 @@ const ProjectBody = styled.div`
   font-family: var(--font-secondary), sans-serif;
   color: var(--color-primary-dark);
   font-weight: 400;
-  padding: 40px 50px 40px 70px;
+  padding: 40px 50px 40px 50px;
   display: flex;
 
   & > * + * {
@@ -23,13 +23,19 @@ const ProjectBody = styled.div`
     // border: 1px solid green;
   }
 
+  & > div > * + * {
+    margin-bottom: 20px;
+  }
+
   & > .defaultpara-projects {
     width: 600px;
   }
 
-  & > p {
-    background-color: var(--color-primary);
+  & > .example-delete-later {
+    width: 320px;
+  }
 
+  & > p {
     & > span {
       & > span {
         display: none !important;
@@ -52,7 +58,7 @@ const ProjectBodyComp = ({ code = false }) => {
   if (!code) {
     relevant = useStaticQuery(graphql`
       query {
-        mdx(frontmatter: { slug: { eq: "projects/shakespeare" } }) {
+        mdx(frontmatter: { slug: { eq: "projects/main" } }) {
           code {
             body
           }

@@ -102,7 +102,7 @@ const ProjectHeaderComp = ({
   if (!frontmatter) {
     relevant = useStaticQuery(graphql`
       query {
-        mdx(frontmatter: { slug: { eq: "projects/shakespeare" } }) {
+        mdx(frontmatter: { slug: { eq: "projects/main" } }) {
           frontmatter {
             title
             tags

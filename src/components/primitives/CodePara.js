@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Prism from "prismjs";
-import "../../prism.css";
+import "../../../static/styles/prism.css";
 
 const Pre = styled.pre`
   margin: 0 100px;

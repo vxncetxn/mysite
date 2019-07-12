@@ -172,7 +172,7 @@ const MainComp = ({ setTransitionRightActivated }) => {
             </li>
             <li>
               <DelayedLink
-                to="/projects/shakespeare"
+                to="/projects/main"
                 delay={1200}
                 uniqueID="portfolio-main-completeprojects-delayed-link"
                 clickEffect={pageTransitionRight}
@@ -186,7 +186,7 @@ const MainComp = ({ setTransitionRightActivated }) => {
                 }}
                 styles={linkStyles}
               >
-                View complete project gallery &rarr;
+                View complete project list &rarr;
               </DelayedLink>
             </li>
           </ul>

@@ -9,6 +9,7 @@ const ProjectMain = styled.div`
   background-color: var(--color-white);
   height: ${() => `calc(${window.innerHeight}px - 160px)`};
   width: auto;
+  min-width: calc(100vw - 160px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   display: inline-flex;

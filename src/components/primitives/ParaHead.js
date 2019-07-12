@@ -6,9 +6,9 @@ const ParaHead = styled.h2`
   font-family: var(--font-primary), sans-serif;
   color: var(--color-primary-dark);
   font-weight: 900;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   // border: 1px solid green;
-  width: 600px;
+  // width: 600px;
 
   ${props =>
     props.number
