@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import { window } from "browser-monads";
 
 import DelayedLink from "../primitives/DelayedLink";
 
@@ -132,9 +133,11 @@ const WritingHeaderComp = ({
               Portfolio
             </DelayedLink>
           </li>
-          <li>
-            <StyledLink to="/">View All Articles</StyledLink>
-          </li>
+          {window.location.pathname === "/writing/main" ? null : (
+            <li>
+              <StyledLink to="/">View All Articles</StyledLink>
+            </li>
+          )}
         </ul>
       </WritingNav>
       <WritingTitle>{relevant.title}</WritingTitle>

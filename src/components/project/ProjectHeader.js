@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import { window } from "browser-monads";
 
 import DelayedLink from "../primitives/DelayedLink";
 import image from "../../assets/sitedemo1-optim.png";
@@ -145,9 +146,11 @@ const ProjectHeaderComp = ({
               Portfolio
             </DelayedLink>
           </li>
-          <li>
-            <StyledLink to="/">View All Projects</StyledLink>
-          </li>
+          {window.location.pathname === "/projects/main" ? null : (
+            <li>
+              <StyledLink to="/">View All Projects</StyledLink>
+            </li>
+          )}
         </ul>
       </ProjectNav>
       <ProjectTitle>{relevant.title}</ProjectTitle>

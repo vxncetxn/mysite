@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { window } from "browser-monads";
 
 import Defaults from "./Defaults";
 

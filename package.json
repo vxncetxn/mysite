@@ -17,6 +17,7 @@
     "@mdx-js/react": "^1.0.21",
     "babel-plugin-prismjs": "^1.0.2",
     "babel-plugin-styled-components": "^1.10.4",
+    "browser-monads": "^1.0.0",
     "gatsby": "^2.3.16",
     "gatsby-mdx": "^0.6.3",
     "gatsby-plugin-sharp": "^2.2.3",

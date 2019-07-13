@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { window } from "browser-monads";
 
 import ProjectHeader from "./ProjectHeader";
 import ProjectBody from "./ProjectBody";
@@ -8,6 +9,7 @@ const ProjectMain = styled.div`
   margin: 80px;
   background-color: var(--color-white);
   height: ${() => `calc(${window.innerHeight}px - 160px)`};
+  min-height: 550px;
   width: auto;
   min-width: calc(100vw - 160px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -20,6 +22,9 @@ const ProjectMainComp = ({
   decorative,
   setTransitionLeftActivated
 }) => {
+  // if (typeof window !== "undefined") {
+  //   console.log(`Location: ${window.location.pathname}`);
+  // }
   return (
     <ProjectMain
       style={
