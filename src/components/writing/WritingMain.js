@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { window } from "browser-monads";
+import { window } from "../../utils/browserMonads";
 
 import WritingHeader from "./WritingHeader";
 import WritingTags from "./WritingTags";
@@ -35,6 +35,7 @@ const WritingMainComp = ({
   decorative,
   setTransitionUpActivated
 }) => {
+  // console.log(window.history.state);
   return (
     <WritingMain
       decorative={decorative}
@@ -46,6 +47,7 @@ const WritingMainComp = ({
     >
       <TopShape />
       <WritingHeader
+        decorative={decorative}
         frontmatter={post.frontmatter}
         setTransitionUpActivated={setTransitionUpActivated}
       />

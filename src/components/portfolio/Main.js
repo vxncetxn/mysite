@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { window } from "browser-monads";
+import { window } from "../../utils/browserMonads";
 
 import DelayedLink from "../primitives/DelayedLink";
 
@@ -89,7 +89,7 @@ const linkStyles = `
 // `;
 
 const MainComp = ({ setTransitionRightActivated }) => {
-  function pageTransitionRight(e) {
+  function pageTransitionRight() {
     setTransitionRightActivated(true);
     document
       .querySelector(".portfolio-layout-body")
@@ -117,7 +117,6 @@ const MainComp = ({ setTransitionRightActivated }) => {
                 delay={1200}
                 uniqueID="portfolio-main-genart-delayed-link"
                 clickEffect={pageTransitionRight}
-                clickEffectArgs={[setTransitionRightActivated]}
                 state={{
                   previousLocation: !window.history.state
                     ? ["portfolio"]
@@ -137,7 +136,6 @@ const MainComp = ({ setTransitionRightActivated }) => {
                 delay={1200}
                 uniqueID="portfolio-main-toolsio-delayed-link"
                 clickEffect={pageTransitionRight}
-                clickEffectArgs={[setTransitionRightActivated]}
                 state={{
                   previousLocation: !window.history.state
                     ? ["portfolio"]
@@ -157,7 +155,6 @@ const MainComp = ({ setTransitionRightActivated }) => {
                 delay={1200}
                 uniqueID="portfolio-main-exampledev-delayed-link"
                 clickEffect={pageTransitionRight}
-                clickEffectArgs={[setTransitionRightActivated]}
                 state={{
                   previousLocation: !window.history.state
                     ? ["portfolio"]
@@ -177,7 +174,6 @@ const MainComp = ({ setTransitionRightActivated }) => {
                 delay={1200}
                 uniqueID="portfolio-main-completeprojects-delayed-link"
                 clickEffect={pageTransitionRight}
-                clickEffectArgs={[setTransitionRightActivated]}
                 state={{
                   previousLocation: !window.history.state
                     ? ["portfolio"]

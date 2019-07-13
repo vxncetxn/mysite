@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { window } from "browser-monads";
+import { window } from "../../utils/browserMonads";
 
 import SidePanel from "./SidePanel";
 import Main from "./Main";

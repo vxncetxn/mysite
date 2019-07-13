@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
-import { window } from "browser-monads";
+import { window } from "../utils/browserMonads";
 
 import Layout from "../components/Layout";
 import ProjectMain from "../components/project/ProjectMain";

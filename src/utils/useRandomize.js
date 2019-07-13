@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { randomizeElements } from "./randomizeElements";
-import { window } from "browser-monads";
+import { window } from "./browserMonads";
 
 export function useRandomize() {
   useEffect(() => {

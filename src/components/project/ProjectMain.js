@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { window } from "browser-monads";
+import { window } from "../../utils/browserMonads";
 
 import ProjectHeader from "./ProjectHeader";
 import ProjectBody from "./ProjectBody";
@@ -32,6 +32,7 @@ const ProjectMainComp = ({
       }
     >
       <ProjectHeader
+        decorative={decorative}
         frontmatter={post.frontmatter}
         setTransitionLeftActivated={setTransitionLeftActivated}
       />

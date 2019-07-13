@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { window } from "browser-monads";
+import { window } from "../../utils/browserMonads";
 
 import DelayedLink from "../primitives/DelayedLink";
 import image from "../../assets/sitedemo1-optim.png";
@@ -83,10 +83,11 @@ const ProjectBadge = styled.span`
 `;
 
 const ProjectHeaderComp = ({
+  decorative,
   frontmatter = false,
   setTransitionLeftActivated
 }) => {
-  function pageTransitionLeft(setTransitionLeftActivated) {
+  function pageTransitionLeft() {
     setTransitionLeftActivated(true);
     if (document.documentElement.scrollLeft) {
       document.documentElement.style.setProperty(
@@ -126,7 +127,6 @@ const ProjectHeaderComp = ({
               delay={1200}
               uniqueID="project-delayed-link"
               clickEffect={pageTransitionLeft}
-              clickEffectArgs={[setTransitionLeftActivated]}
               state={{
                 previousLocation: !window.history.state
                   ? ["project"]
@@ -143,7 +143,11 @@ const ProjectHeaderComp = ({
                 cursor: pointer;
               `}
             >
-              Portfolio
+              {decorative
+                ? "Back to Portfolio"
+                : window.history.state.previousLocation.includes("portfolio")
+                ? "Back to Portfolio"
+                : "Portfolio"}
             </DelayedLink>
           </li>
           {window.location.pathname === "/projects/main" ? null : (

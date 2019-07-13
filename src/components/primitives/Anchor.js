@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { window } from "browser-monads";
+import { window } from "../../utils/browserMonads";
 
 const ExternalAnchor = styled.a`
   font-size: ${props => props.extend.fontSize || "2.4rem"};

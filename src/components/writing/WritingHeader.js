@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { window } from "browser-monads";
+import { window } from "../../utils/browserMonads";
 
 import DelayedLink from "../primitives/DelayedLink";
 
@@ -69,10 +69,11 @@ const StyledLink = styled(Link)`
 `;
 
 const WritingHeaderComp = ({
+  decorative,
   frontmatter = false,
   setTransitionUpActivated
 }) => {
-  function pageTransitionUp(setTransitionUpActivated) {
+  function pageTransitionUp() {
     setTransitionUpActivated(true);
     if (document.documentElement.scrollTop) {
       document.documentElement.style.setProperty(
@@ -112,7 +113,6 @@ const WritingHeaderComp = ({
               delay={1200}
               uniqueID="writing-delayed-link"
               clickEffect={pageTransitionUp}
-              clickEffectArgs={[setTransitionUpActivated]}
               state={{
                 previousLocation: !window.history.state
                   ? ["writing"]
@@ -130,10 +130,15 @@ const WritingHeaderComp = ({
                 cursor: pointer;
               `}
             >
-              Portfolio
+              {decorative
+                ? "Back to Portfolio"
+                : window.history.state.previousLocation.includes("portfolio")
+                ? "Back to Portfolio"
+                : "Portfolio"}
             </DelayedLink>
           </li>
-          {window.location.pathname === "/writing/main" ? null : (
+          {decorative ? null : window.location.pathname ===
+            "/writing/main" ? null : (
             <li>
               <StyledLink to="/">View All Articles</StyledLink>
             </li>
@@ -149,7 +154,7 @@ const WritingHeaderComp = ({
         {relevant.tags === "none"
           ? null
           : relevant.tags.split(" ").map(tag => {
-              return <WritingBadge>{tag}</WritingBadge>;
+              return <WritingBadge key={tag}>{tag}</WritingBadge>;
             })}
       </WritingBadges>
     </WritingHeader>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { window } from "browser-monads";
+import { window, document } from "../../utils/browserMonads";
 
 import DelayedLink from "../primitives/DelayedLink";
 
@@ -38,7 +38,15 @@ const Navbar = styled.nav`
 // `;
 
 const NavbarComp = ({ setTransitionDownActivated }) => {
-  function pageTransitionDown(setTransitionDownActivated) {
+  function pageTransitionDown() {
+    // window.history.replaceState(
+    //   {
+    //     previousLocation: window.history.state.previousLocation.concat(
+    //       "portfolio"
+    //     )
+    //   },
+    //   document.title
+    // );
     setTransitionDownActivated(true);
     if (document.documentElement.scrollTop) {
       document.documentElement.style.setProperty(
@@ -86,12 +94,12 @@ const NavbarComp = ({ setTransitionDownActivated }) => {
             delay={1200}
             uniqueID="portfolio-nav-delayed-link"
             clickEffect={pageTransitionDown}
-            clickEffectArgs={[setTransitionDownActivated]}
             state={{
               previousLocation: !window.history.state
                 ? ["portfolio"]
                 : window.history.state.previousLocation.concat(["portfolio"])
             }}
+            // state={{ ...window.history.state }}
             styles={`
                 position: relative;
                 padding-right: 30px;
